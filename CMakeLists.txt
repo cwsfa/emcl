@@ -8,15 +8,20 @@ find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
   tf2
   tf2_ros
+  dynamic_reconfigure
 )
 
+generate_dynamic_reconfigure_options(
+  cfg/dynamic.cfg
+)
 
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES mcl
-#  CATKIN_DEPENDS roscpp
-#  DEPENDS system_lib
+  INCLUDE_DIRS include
+  LIBRARIES mcl
+  CATKIN_DEPENDS roscpp rospy dynamic_reconfigure geometry_msgs tf2 tf2_ros
+  DEPENDS system_lib
 )
+
 
 include_directories(include ${catkin_INCLUDE_DIRS} )
 
@@ -28,6 +33,9 @@ add_library(Scan src/Scan.cpp)
 add_library(LikelihoodFieldMap src/LikelihoodFieldMap.cpp)
 
 add_executable(${PROJECT_NAME}_node src/mcl_node.cpp)
+
+add_dependencies(${PROJECT_NAME}_node ${PROJECT_NAME}_gencfg)
+
 
 add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 

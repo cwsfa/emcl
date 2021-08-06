@@ -8,19 +8,15 @@
   <license>LGPL</license>
 
   <url type="website">https://github.com/ryuichiueda/emcl/</url>
-
-
+  <buildtool_depend>catkin</buildtool_depend>
   <depend>tf2</depend>
   <depend>tf2_ros</depend>
   <depend>tf2_msgs</depend>
   <depend>tf2_geometry_msgs</depend>
-
   <depend>geometry_msgs</depend>
   <depend>nav_msgs</depend>
   <depend>sensor_msgs</depend>
-
   <depend>roscpp</depend>
-
-  <buildtool_depend>catkin</buildtool_depend>
-
+  <depend>dynamic_reconfigure</depend>
+  <depend>rospy</depend>
 </package>
